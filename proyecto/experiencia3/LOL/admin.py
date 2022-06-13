@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Comuna, Cliente
+from .models import  Cliente, Comuna, Productos
 # Register your models here.
-admin.site.register(Comuna)
+
 admin.site.register(Cliente)
+admin.site.register(Comuna)
+admin.site.register(Productos)

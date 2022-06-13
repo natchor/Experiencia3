@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>comprando productos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+    <style>
+        body{
+            font-family: Arial;
+        }
+
+        .error-control{
+            border: 1px solid red;
+        }
+
+        label.error{
+            color: red;
+            width: 200px;
+            font-size: 0.8em;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+
+        $(function() 
+        {
+          $("#formulario").validate({
+               rules: {
+                      email: {
+                            idproducto: "required",
+                            imagen: "required",
+                            description: "required",
+                            cantidad: "required",
+                            precio: "required",
+                            
+                      }   
+                      
+                  }, //rules
+              messages: {
+                  idproducto: {
+                      required: 'Ingrese el Id del producto ',
+                  },
+                  imagen: {
+                      required: 'Ingrese la imagen del producto',
+                  },
+                  description:{
+                      required: 'Ingrese el detalle',
+                  },
+                  cantidad:{
+                      required: 'ingrese la cantidad en stock',
+                  },
+                  precio:{
+                      required: 'ingrese el precio ',
+                  },
+              }//messages
+          }); //$('#mi-formulario').validate
+      }); //function
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2>comprando productos</h2>
+        </div>
+
+            <div class="row">
+                <form  method="post" action="#">
+                    {%csrf_token%}
+                    <div class="form-group">
+                        {{productos_form.idproducto.label}}
+                        {{productos_form.idproducto}}
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        {{productos_form.nombre.label}}
+                        {{productos_form.nombre}}
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        {{productos_form.imagen.label}}
+                        {{productos_form.imagen}}
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        {{productos_form.description.label}}
+                        {{productos_form.description}}
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        {{productos_form.cantidad.label}}
+                        {{productos_form.cantidad}}
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        {{productos_form.precio.label}}
+                        {{productos_form.precio}}
+                    </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-md">
+                             <input type="submit" class="btn btn-danger" id="enviar" value="Enviar">
+                            <input type="reset" class="btn btn-primary" id="limpiar" value="Limpiar">
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+</body>
+</html>
